@@ -1,0 +1,16 @@
+.desktop-icon {
+  display: inline-block;
+  text-align: center;
+  margin: 10px;
+  color: white;
+  cursor: pointer;
+  width: 70px;
+}
+
+.desktop-icon img {
+  image-rendering: pixelated;
+}
+
+.desktop-icon span {
+  font-size: 12px;
+}
