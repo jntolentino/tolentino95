@@ -29,3 +29,15 @@ html, body, #root {
   height: 100%;
   overflow: hidden; /* 🚫 disables scrolling */
 }
+
+.desktop-icons {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 80px); /* 1 column every 80px */
+  grid-auto-rows: 80px;
+  gap: 10px;
+  justify-content: start;
+  align-content: start;
+}

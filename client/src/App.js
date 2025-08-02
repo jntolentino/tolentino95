@@ -1,11 +1,13 @@
 // src/App.js
-import React, { useState } from "react";
+import { useState } from "react";
 import Window from "./components/Window";
 import DesktopIcon from "./components/DesktopIcon";
 import "./App.css";
 
 import githubIcon from "./assets/githubIcon.png";
 import linkedinIcon from "./assets/linkedinIcon.webp";
+import pcIcon from "./assets/pcIcon.png";
+
 import Taskbar from "./components/Taskbar";
 
 function App() {
@@ -54,9 +56,12 @@ function App() {
         fontSize: "16px",
       }}
     >
-      {/* Desktop Icons */}
-
-      <div style={{ position: "absolute", top: 20, left: 20 }}>
+      <div className="desktop-icons">
+        <DesktopIcon
+          icon={pcIcon}
+          label="PC"
+          onDoubleClick={() => toggleWindow("pcicon", "visible", true)}
+        />
         <DesktopIcon
           icon={githubIcon}
           label="GitHub"
@@ -67,12 +72,33 @@ function App() {
           label="LinkedIn"
           onDoubleClick={() => toggleWindow("linkedin", "visible", true)}
         />
+
+        {/* Add more icons here */}
       </div>
+
+      {/* PC Icon Window */}
+      {windows.pcicon && windows.pcicon.visible && (
+        <Window
+          title="PC Icon"
+          isMaximized={windows.pcicon.maximized}
+          initialPosition={getOffsetPosition(windows.pcicon.positionIndex)}
+          onClose={() => toggleWindow("pcicon", "visible", false)}
+          onMinimize={() => toggleWindow("pcicon", "minimized", true)}
+          onMaximize={() =>
+            toggleWindow("pcicon", "maximized", !windows.pcicon.maximized)
+          }
+        >
+          <p>This is a placeholder for the PC icon window.</p>
+          <button onClick={() => alert("PC Icon Window Action")}>
+            PC Icon Action
+          </button>
+        </Window>
+      )}
 
       {/* GitHub Window */}
       {windows.github.visible && !windows.github.minimized && (
         <Window
-          title="GitHub"
+          title="GitHub "
           isMaximized={windows.github.maximized}
           initialPosition={getOffsetPosition(windows.github.positionIndex)}
           onClose={() => toggleWindow("github", "visible", false)}
