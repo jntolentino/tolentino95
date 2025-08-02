@@ -24,6 +24,12 @@ function App() {
       maximized: false,
       positionIndex: 1,
     },
+    pcicon: {
+      visible: false,
+      minimized: false,
+      maximized: false,
+      positionIndex: 2,
+    },
   });
 
   const toggleWindow = (name, prop, value) => {
@@ -46,7 +52,7 @@ function App() {
         width: "100vw",
         height: "100vh", // Full screen
         overflow: "hidden", // Prevent scroll
-        paddingBottom: "32px", // Make room for taskbar
+      
         background: "#008080",
         backgroundImage: "url('./assets/desktopBackground.jpg')",
         backgroundSize: "cover",
@@ -54,6 +60,7 @@ function App() {
         fontFamily: "'dos437', monospace",
         color: "#fff",
         fontSize: "16px",
+       
       }}
     >
       <div className="desktop-icons">
@@ -142,6 +149,7 @@ function App() {
       )}
 
       {/* Taskbar */}
+
       <Taskbar
         windows={windows}
         onRestore={(key) => toggleWindow(key, "minimized", false)}

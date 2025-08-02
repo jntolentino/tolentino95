@@ -18,7 +18,7 @@ export default function Window({
         isMaximized
           ? {
               width: '100%',
-              height: 'calc(100% - 40px)',
+              height: 'calc(100% - 30px)',
               position: 'absolute',
               top: 0,
               left: 0,
