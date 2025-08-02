@@ -52,12 +52,12 @@ function App() {
         width: "100vw",
         height: "100vh", // Full screen
         overflow: "hidden", // Prevent scroll
-      
+        
         background: "#008080",
         backgroundImage: "url('./assets/desktopBackground.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        fontFamily: "'dos437', monospace",
+        fontFamily: "'Pixelated MS Sans Serif', sans-serif",
         color: "#fff",
         fontSize: "16px",
        
