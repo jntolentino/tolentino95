@@ -1,3 +1,4 @@
+// src/App.js
 import React, { useState } from 'react';
 import Window from './components/Window';
 import DesktopIcon from './components/DesktopIcon';
@@ -5,43 +6,80 @@ import './App.css';
 
 import githubIcon from './assets/githubIcon.png';
 import linkedinIcon from './assets/linkedinIcon.webp';
+import Taskbar from './components/Taskbar';
+
 
 function App() {
-  const [showGitHub, setShowGitHub] = useState(false);
-  const [showLinkedIn, setShowLinkedIn] = useState(false);
+  const [windows, setWindows] = useState({
+    github: { visible: false, minimized: false, maximized: false, positionIndex: 0 },
+    linkedin: { visible: false, minimized: false, maximized: false , positionIndex:1},
+  });
+
+  const toggleWindow = (name, prop, value) => {
+    setWindows((prev) => ({
+      ...prev,
+      [name]: { ...prev[name], [prop]: value },
+    }));
+  };
+
+  const getOffsetPosition = (index) => ({
+  x: 100 + index * 40,
+  y: 100 + index * 30,
+});
+
+ 
 
   return (
-    <div className="desktop" style={{ height: '100vh', background: '#008080', padding: 20 }}>
-      {/* About Me Window */}
-      <Window title="About Me">
-        <p>Hi, I'm Nico Tolentino — a software developer with a love for retro UIs!</p>
-      </Window>
-
+    <div className="desktop" style={{ height: '100vh', background: '#008080', padding: 20, position: 'relative' }}>
       {/* Desktop Icons */}
-      <DesktopIcon icon={githubIcon} label="GitHub" onDoubleClick={() => setShowGitHub(true)} />
-      <DesktopIcon icon={linkedinIcon} label="LinkedIn" onDoubleClick={() => setShowLinkedIn(true)} />
+      <DesktopIcon
+        icon={githubIcon}
+        label="GitHub"
+        onDoubleClick={() => toggleWindow('github', 'visible', true)}
+      />
+      <DesktopIcon
+        icon={linkedinIcon}
+        label="LinkedIn"
+        onDoubleClick={() => toggleWindow('linkedin', 'visible', true)}
+      />
 
       {/* GitHub Window */}
-      {showGitHub && (
-        <Window title="GitHub">
-          <p>See my projects and code on GitHub.</p>
-          <button onClick={() => window.open('https://github.com/your-username', '_blank')}>
-            Open GitHub
-          </button>
-          <button onClick={() => setShowGitHub(false)}>Close</button>
-        </Window>
+      {windows.github.visible && !windows.github.minimized && (
+       <Window
+  title="GitHub"
+  isMaximized={windows.github.maximized}
+  initialPosition={getOffsetPosition(windows.github.positionIndex)}
+  onClose={() => toggleWindow('github', 'visible', false)}
+  onMinimize={() => toggleWindow('github', 'minimized', true)}
+  onMaximize={() => toggleWindow('github', 'maximized', !windows.github.maximized)}
+>
+  <p>See my projects and code on GitHub.</p>
+  <button onClick={() => window.open('https://github.com/your-username', '_blank')}>
+    Open GitHub
+  </button>
+</Window>
       )}
 
       {/* LinkedIn Window */}
-      {showLinkedIn && (
-        <Window title="LinkedIn">
+      {windows.linkedin.visible && !windows.linkedin.minimized && (
+       <Window
+  title="LinkedIn"
+  isMaximized={windows.linkedin.maximized}
+  initialPosition={getOffsetPosition(windows.linkedin.positionIndex)}
+  onClose={() => toggleWindow('linkedin', 'visible', false)}
+  onMinimize={() => toggleWindow('linkedin', 'minimized', true)}
+  onMaximize={() => toggleWindow('linkedin', 'maximized', !windows.linkedin.maximized)}
+>
           <p>Click below to view my LinkedIn profile.</p>
           <button onClick={() => window.open('https://linkedin.com/in/your-link', '_blank')}>
             Open LinkedIn
           </button>
-          <button onClick={() => setShowLinkedIn(false)}>Close</button>
         </Window>
       )}
+
+      {/* Taskbar */}
+      <Taskbar windows={windows} onRestore={(key) => toggleWindow(key, 'minimized', false)} />
+
     </div>
   );
 }
