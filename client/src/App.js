@@ -55,16 +55,19 @@ function App() {
       }}
     >
       {/* Desktop Icons */}
-      <DesktopIcon
-        icon={githubIcon}
-        label="GitHub"
-        onDoubleClick={() => toggleWindow("github", "visible", true)}
-      />
-      <DesktopIcon
-        icon={linkedinIcon}
-        label="LinkedIn"
-        onDoubleClick={() => toggleWindow("linkedin", "visible", true)}
-      />
+
+      <div style={{ position: "absolute", top: 20, left: 20 }}>
+        <DesktopIcon
+          icon={githubIcon}
+          label="GitHub"
+          onDoubleClick={() => toggleWindow("github", "visible", true)}
+        />
+        <DesktopIcon
+          icon={linkedinIcon}
+          label="LinkedIn"
+          onDoubleClick={() => toggleWindow("linkedin", "visible", true)}
+        />
+      </div>
 
       {/* GitHub Window */}
       {windows.github.visible && !windows.github.minimized && (
