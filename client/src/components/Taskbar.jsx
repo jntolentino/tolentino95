@@ -1,6 +1,7 @@
 // src/components/Taskbar.jsx
 import React from 'react';
 import './Taskbar.css';
+import Clock from "./Clock";
 
 export default function Taskbar({ windows, onRestore }) {
   return (
@@ -12,6 +13,9 @@ export default function Taskbar({ windows, onRestore }) {
           </button>
         ) : null
       )}
+      <div className="taskbar-right">
+        <Clock />
+      </div>
     </div>
   );
 }

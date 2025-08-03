@@ -12,6 +12,7 @@
   padding: 0 10px;
   gap: 8px;
   z-index: 1000;
+  justify-content: space-between;
 }
 
 .taskbar button {
@@ -25,4 +26,9 @@
 
 .taskbar button:hover {
   background-color: #d0d0d0;
+}
+
+.taskbar-right {
+  display: flex;
+  align-items: center;
 }

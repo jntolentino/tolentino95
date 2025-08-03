@@ -1,0 +1,21 @@
+/* src/components/Clock.css */
+/* src/components/Clock.css */
+.taskbar-clock {
+  font-family: 'Pixelated MS Sans Serif', sans-serif;
+  font-size: 12px;
+  background: #c0c0c0;
+  color: black;
+  padding: 2px 6px;
+  border: 2px solid #fff;
+  border-right-color: #808080;
+  border-bottom-color: #808080;
+  border-left-color: #fff;
+  border-top-color: #fff;
+  box-shadow: inset -1px -1px #808080;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  min-width: 60px;
+}
