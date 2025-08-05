@@ -9,14 +9,6 @@ export default function Taskbar({ windows, onRestore, onStartClick }) {
     <div className="taskbar">
       <div className="taskbar-left">
         <StartButton onClick={onStartClick} />
-
-        {Object.entries(windows).map(([key, win]) =>
-          win.visible ? (
-            <button key={key} onClick={() => onRestore(key)}>
-              {key.charAt(0).toUpperCase() + key.slice(1)}
-            </button>
-          ) : null
-        )}
       </div>
       {Object.entries(windows).map(([key, win]) =>
         win.visible ? (
