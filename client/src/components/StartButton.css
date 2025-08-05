@@ -1,0 +1,22 @@
+/* StartButton.css */
+
+.start-button {
+  background-color: #c0c0c0;
+  border: 2px outset #ffffff;
+  padding: 2px 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 28px;
+  cursor: pointer;
+  font-family: 'Pixelated MS Sans Serif', sans-serif;
+}
+
+.start-button:active {
+  border: 2px inset #000000;
+}
+
+.start-button-icon {
+  height: 20px;
+  width: 20px;
+}
